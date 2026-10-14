@@ -31,6 +31,7 @@
   --black:#000;
   --white:#fff;
   --line:#E3E8F0;
+  --bg-soft:#F5F7FA;
 
   --h:'Roboto',sans-serif;        /* headings */
   --b:'Inter',sans-serif;         /* body + buttons */
@@ -870,3 +871,32 @@ a.problem:hover .go{color:#fff}
 .sec--navy p strong,.sec--deep p strong,.areas p strong,.brands p strong,
 .ctaband p strong,.sec--navy .checks strong,.areas .checks strong,
 .sec--navy li strong,.areas li strong{color:#fff}
+
+
+/* ==========================================================================
+   WHY CHOOSE
+   Sits directly under the navy badge bar, so it must not also be navy or the
+   two read as one slab. Light band + a 3x2 card grid gives it its own
+   footprint and a scannable structure.
+   ========================================================================== */
+.whychoose{background:var(--bg-soft);border-top:1px solid #E6EBF2;border-bottom:1px solid #E6EBF2}
+.whygrid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s4)}
+.whycard{
+  background:#fff;border:1px solid var(--line);border-radius:6px;
+  padding:var(--s5);display:flex;align-items:flex-start;gap:var(--s4);
+  transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease;
+}
+.whycard:hover{border-color:var(--navy);box-shadow:0 10px 30px rgba(16,34,66,.09);transform:translateY(-3px)}
+.whycard .chip{
+  width:52px;height:52px;border-radius:6px;flex:none;
+  background:rgba(31,58,104,.08);border:1px solid rgba(31,58,104,.14);
+  display:flex;align-items:center;justify-content:center;
+  transition:background .18s ease,border-color .18s ease;
+}
+.whycard .chip .ic{font-size:24px;background-color:var(--navy-deep)}
+.whycard:hover .chip{background:var(--navy-deep);border-color:var(--navy-deep)}
+.whycard:hover .chip .ic{background-color:#fff}
+.whycard h3{
+  font-family:var(--h);font-size:19px;line-height:26px;font-weight:600;
+  color:var(--navy-deep);margin:0;
+}
