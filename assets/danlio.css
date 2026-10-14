@@ -1,0 +1,329 @@
+/* ==========================================================================
+   DANLIO Garage Door Repair — GLOBAL STYLESHEET
+   Every value below was measured from the live site danliogaragedoor.com
+   at a 1920px viewport on 2026-10-14. Nothing here is a design choice.
+
+   MEASURED REFERENCE
+   ------------------------------------------------------------------
+   container ........ 1240px, page gutter 0 10px
+   top bar .......... height 44px, bg #062F63, Inter 16px / 24px, #fff
+   header ........... height 111px, bg #fff, gutter 0 10px
+   logo ............. 274 x 91px
+   nav link ......... Roboto 18px / 500 / UPPERCASE / #000, padding 13px 20px
+   hero ............. height 610px, bg cover center + black overlay @ .5
+   h1 ............... Roboto 76px / 700 / line-height 83.6px / #fff
+   hero subhead ..... Inter 22px / 400 / line-height 33px / #fff
+   hero paragraph ... Inter 18px / 400 / line-height 27px / rgba(255,255,255,.86)
+   h2 ............... Roboto 50px / 600 / line-height 60px
+   card title ....... Roboto 28px / 600 / line-height 33.6px / #000
+   small title ...... Roboto 23px / 600 / line-height 27.6px
+   body text ........ Inter 16px / 24px / #414141
+   button ........... Inter 20px / 500 / UPPERCASE, padding 15px 25px,
+                      radius 3px, bg #D32F2F
+   section padding .. 30px top / 30px bottom (inner container)
+   ========================================================================== */
+
+:root{
+  --navy:#1F3A68;
+  --navy-deep:#062F63;
+  --red:#D32F2F;
+  --ink:#414141;
+  --black:#000;
+  --white:#fff;
+  --line:#E3E8F0;
+
+  --h:'Roboto',sans-serif;        /* headings */
+  --b:'Inter',sans-serif;         /* body + buttons */
+
+  --wrap:1240px;
+  --gutter:10px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:var(--b);
+  font-size:16px;
+  line-height:24px;
+  color:var(--ink);
+  background:var(--white);
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:var(--navy-deep);text-decoration:none}
+
+/* ---- headings (measured) ---- */
+h1,h2,h3,h4{font-family:var(--h);margin:0 0 20px;color:var(--navy-deep)}
+h1{font-size:76px;font-weight:700;line-height:83.6px;color:var(--white)}
+h2{font-size:50px;font-weight:600;line-height:60px}
+h3{font-size:28px;font-weight:600;line-height:33.6px;color:var(--black)}
+h4{font-size:23px;font-weight:600;line-height:27.6px}
+p{margin:0 0 16px}
+
+/* ---- layout ----
+   MEASURED: the live site puts 10px horizontal padding on the FULL-WIDTH
+   section wrapper, and centres a 1240px inner box inside it. The inner box
+   itself has NO horizontal padding, so content is a true 1240px wide and
+   starts at x=332 on a 1920px viewport. */
+.sec,.badgebar,.ctaband,.topbar,.site-header,.site-footer,.hero{padding-left:var(--gutter);padding-right:var(--gutter)}
+.wrap{max-width:var(--wrap);margin:0 auto;width:100%}
+.sec{padding-top:80px;padding-bottom:80px}
+.sec--tight{padding-top:40px;padding-bottom:80px}
+.sec--btm{padding-top:0;padding-bottom:80px}
+.sec--navy{background:var(--navy);color:var(--white)}
+.sec--navy h2,.sec--navy h3,.sec--navy h4{color:var(--white)}
+.sec--navy p{color:rgba(255,255,255,.86)}
+.sec--deep{background:var(--navy-deep);color:var(--white)}
+.sec--deep h2,.sec--deep h3{color:var(--white)}
+.center{text-align:center}
+.sec-head{margin-bottom:30px}
+.sec-head.center{text-align:center}
+.sec-head p{font-size:18px;line-height:27px}
+.sec--navy .sec-head p{color:rgba(255,255,255,.86)}
+
+/* ---- buttons (measured: Inter 20/500 uppercase, 15px 25px, radius 3px) ---- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  font-family:var(--b);font-size:20px;font-weight:500;line-height:20px;
+  text-transform:uppercase;
+  padding:15px 25px;border-radius:3px;border:1px solid transparent;
+  cursor:pointer;transition:.18s ease;text-align:center;
+}
+.btn--call{background:var(--red);color:var(--white);border-color:var(--red)}
+.btn--call:hover{background:#b02222;border-color:#b02222}
+.btn--ghost{background:transparent;color:var(--white);border-color:var(--white)}
+.btn--ghost:hover{background:var(--white);color:var(--navy-deep)}
+.btn--navy{background:var(--navy-deep);color:var(--white);border-color:var(--navy-deep)}
+.btn--navy:hover{background:var(--navy)}
+.btn--block{width:100%}
+
+/* ---- top bar (measured: 44px, #062F63, Inter 16/24) ---- */
+.topbar{background:var(--navy-deep);color:var(--white);display:flex;align-items:center}
+.topbar .wrap{padding:10px 0}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px}
+.topbar a,.topbar span{
+  font-family:var(--b);font-size:16px;font-weight:400;line-height:24px;color:var(--white);
+  display:inline-flex;align-items:center;gap:8px;
+}
+
+/* ---- header (measured: 111px, white, logo 274x91) ---- */
+.site-header{background:var(--white);display:flex;align-items:center}
+.site-header .wrap{padding:10px 0}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.site-logo img{width:274px;height:91px;object-fit:contain}
+.site-nav ul{display:flex;list-style:none;margin:0;padding:0}
+.site-nav a{
+  font-family:var(--h);font-size:18px;font-weight:500;line-height:20px;
+  text-transform:uppercase;color:var(--black);
+  padding:13px 20px;display:block;
+}
+.site-nav a:hover{color:var(--red)}
+.burger{display:none;background:none;border:0;color:var(--navy-deep);cursor:pointer;padding:8px}
+
+/* ---- hero (measured: 610px, cover, black overlay .5) ---- */
+.hero{
+  position:relative;display:flex;align-items:center;
+  background-position:50% 50%;background-size:cover;background-repeat:no-repeat;
+  padding-top:80px;padding-bottom:150px;
+}
+.hero::before{content:"";position:absolute;inset:0;background:#000;opacity:.5}
+.hero .wrap{position:relative;z-index:2}
+.hero__inner{max-width:869px}
+.hero h1{margin-bottom:20px}
+.hero__subhead{
+  font-family:var(--b);font-size:22px;font-weight:400;line-height:33px;
+  color:var(--white);margin-bottom:20px;
+}
+.hero p{font-size:18px;line-height:27px;color:rgba(255,255,255,.86);max-width:657px}
+.hero__btns{display:flex;gap:16px;flex-wrap:wrap;margin-top:30px}
+
+/* ---- badge strip (measured: Roboto 23/600) ---- */
+.badgebar{background:var(--navy);padding:22px 0}
+.badgebar .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.badgebar span{
+  font-family:var(--h);font-size:23px;font-weight:600;line-height:27.6px;
+  color:var(--white);display:inline-flex;align-items:center;gap:12px;
+}
+
+/* ---- cards ---- */
+.cards{display:grid;gap:30px}
+.c2{grid-template-columns:repeat(2,1fr)}
+.c3{grid-template-columns:repeat(3,1fr)}
+.c4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--white);border:1px solid var(--line);border-radius:3px;padding:30px}
+.card h3{margin-bottom:12px}
+.card p{font-size:16px;line-height:24px;color:var(--ink);margin-bottom:0}
+.ico{
+  width:60px;height:60px;border-radius:3px;
+  background:rgba(211,47,47,.1);color:var(--red);
+  display:flex;align-items:center;justify-content:center;margin-bottom:20px;
+}
+.ico--navy{background:rgba(31,58,104,.1);color:var(--navy-deep)}
+
+/* ---- split ---- */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.split img{border-radius:3px}
+.split--flip .split__media{order:2}
+
+/* ---- checklists (measured: Inter 28/400 lh42 on navy "why" rows) ---- */
+.checks{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.checks.two{grid-template-columns:1fr 1fr}
+.checks li{display:flex;gap:14px;align-items:flex-start;font-size:18px;line-height:27px}
+.checks .ic{color:var(--red);margin-top:4px}
+.sec--navy .checks li{color:var(--white)}
+.sec--navy .checks .ic{color:var(--white)}
+.whylist li{font-size:28px;line-height:42px}
+
+/* ---- numbered steps ---- */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.step{text-align:center}
+.step .n{
+  width:60px;height:60px;border-radius:50%;background:var(--red);color:var(--white);
+  font-family:var(--h);font-weight:700;font-size:28px;line-height:60px;
+  margin:0 auto 20px;
+}
+.step h3{color:var(--white)}
+.step p{font-size:16px;line-height:24px}
+
+/* ---- warranty ---- */
+.warr{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;text-align:center}
+.warr .w{border:1px solid var(--line);border-radius:3px;padding:30px}
+.warr .big{font-family:var(--h);font-weight:700;font-size:50px;line-height:60px;color:var(--red)}
+.warr h3{margin-bottom:0}
+
+/* ---- reviews ---- */
+.rev{background:var(--white);border:1px solid var(--line);border-radius:3px;padding:30px}
+.rev q{display:block;font-size:18px;line-height:27px;color:var(--ink);font-style:normal;margin-bottom:16px}
+.rev cite{font-style:normal;font-family:var(--h);font-weight:600;font-size:18px;color:var(--navy-deep)}
+
+/* ---- pills (problems we fix) ---- */
+.pills{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.pills span{display:inline-flex;align-items:center;gap:12px;font-size:18px;line-height:27px}
+.pills .ic{color:var(--red)}
+.sec--navy .pills span{color:var(--white)}
+.sec--navy .pills .ic{color:var(--white)}
+
+/* ---- FAQ ---- */
+.faq{max-width:900px;margin:0 auto}
+details.q{border-bottom:1px solid var(--line)}
+details.q summary{
+  list-style:none;cursor:pointer;padding:20px 50px 20px 0;position:relative;
+  font-family:var(--h);font-size:23px;font-weight:600;line-height:27.6px;color:var(--navy-deep);
+}
+details.q summary::-webkit-details-marker{display:none}
+details.q summary::after{
+  content:"+";position:absolute;right:10px;top:50%;transform:translateY(-50%);
+  font-family:var(--b);font-size:30px;font-weight:400;color:var(--red);line-height:1;
+}
+details.q[open] summary::after{content:"\2013"}
+details.q .a{padding:0 0 20px;font-size:16px;line-height:24px;color:var(--ink)}
+
+/* ---- service areas ---- */
+.areas-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.areas-grid span{
+  font-family:var(--h);font-size:23px;font-weight:600;line-height:27.6px;
+  color:var(--white);display:flex;align-items:center;gap:10px;
+}
+
+/* ---- request form ---- */
+.formbox{max-width:900px;margin:0 auto}
+.formbox label{display:block;font-family:var(--h);font-size:18px;font-weight:500;color:var(--navy-deep);margin-bottom:8px}
+.formbox input,.formbox select,.formbox textarea{
+  width:100%;padding:14px 16px;border:1px solid #ccc;border-radius:3px;
+  font-family:var(--b);font-size:16px;line-height:24px;color:var(--ink);
+  background:var(--white);margin-bottom:20px;
+}
+.formbox input:focus,.formbox select:focus,.formbox textarea:focus{outline:none;border-color:var(--navy)}
+.formbox textarea{min-height:110px;resize:vertical}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}
+
+/* ---- big CTA band ---- */
+.ctaband{background:var(--navy-deep);color:var(--white);text-align:center;padding:50px 0}
+.ctaband h2{color:var(--white)}
+.ctaband p{font-size:22px;line-height:33px;color:var(--white);margin-bottom:24px}
+.bigphone{font-family:var(--h);font-weight:700;font-size:50px;line-height:60px;color:var(--white);display:inline-block}
+
+/* ---- footer ---- */
+.site-footer{background:var(--navy-deep);color:rgba(255,255,255,.86);padding:50px 0 0}
+.site-footer .cols{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:40px;padding-bottom:40px}
+.site-footer h4{color:var(--white);margin-bottom:16px}
+.site-footer p{font-size:16px;line-height:24px;color:rgba(255,255,255,.86)}
+.site-footer a{color:rgba(255,255,255,.86)}
+.site-footer a:hover{color:var(--white)}
+.site-footer ul{list-style:none;margin:0;padding:0;display:grid;gap:12px;font-size:16px}
+.site-footer .logo img{width:274px;height:91px;object-fit:contain;margin-bottom:20px;background:#fff;padding:6px;border-radius:3px}
+.fphone{font-family:var(--h);font-weight:700;font-size:28px;color:var(--white)}
+.copy{border-top:1px solid rgba(255,255,255,.2);padding:20px 0;font-size:16px;text-align:center}
+
+/* ---- sticky mobile call bar ---- */
+.mobilebar{
+  display:none;position:fixed;left:0;right:0;bottom:0;z-index:90;
+  background:var(--white);border-top:1px solid var(--line);
+  box-shadow:0 -4px 18px rgba(0,0,0,.14);padding:10px;gap:10px;
+}
+.mobilebar .btn{flex:1;font-size:16px;padding:14px 10px}
+
+/* ---- icon knockout colour per background ---- */
+.sec--navy .ic,.sec--deep .ic,.hero .ic,.badgebar .ic,.step .ic,.ctaband .ic{--knock:var(--navy)}
+.site-footer .ic{--knock:var(--navy-deep)}
+.btn--call .ic{--knock:var(--red)}
+
+/* ==========================================================================
+   RESPONSIVE
+   The live site is built on Elementor's breakpoints (1024 / 767).
+   ========================================================================== */
+@media(max-width:1024px){
+  h1{font-size:52px;line-height:60px}
+  h2{font-size:38px;line-height:46px}
+  h3{font-size:24px;line-height:30px}
+  .hero{min-height:480px}
+  .hero__subhead{font-size:20px;line-height:30px}
+  .c4{grid-template-columns:repeat(2,1fr)}
+  .c3{grid-template-columns:repeat(2,1fr)}
+  .pills{grid-template-columns:repeat(2,1fr)}
+  .areas-grid{grid-template-columns:repeat(3,1fr)}
+  .split{grid-template-columns:1fr;gap:30px}
+  .split--flip .split__media{order:0}
+  .steps{grid-template-columns:1fr}
+  .warr{grid-template-columns:1fr}
+  .site-footer .cols{grid-template-columns:1fr 1fr}
+
+  .site-header{position:relative}
+  .site-header .wrap{padding:16px 0}
+  .site-logo img{width:200px;height:66px}
+  .burger{display:block}
+  .site-nav{display:none}
+  .site-nav.open{
+    display:block;position:absolute;top:100%;left:0;right:0;z-index:50;
+    background:var(--white);border-top:1px solid var(--line);
+    box-shadow:0 10px 30px rgba(0,0,0,.12);
+  }
+  .site-nav.open ul{flex-direction:column;padding:10px 20px}
+  .site-nav.open li{border-bottom:1px solid var(--line)}
+  .site-nav.open a{padding:14px 0}
+}
+@media(max-width:767px){
+  h1{font-size:36px;line-height:43px}
+  h2{font-size:30px;line-height:38px}
+  h3{font-size:22px;line-height:28px}
+  body{padding-bottom:76px}
+  .hero{min-height:420px;padding-top:40px;padding-bottom:40px}
+  .hero__subhead{font-size:18px;line-height:28px}
+  .hero p{font-size:16px;line-height:24px}
+  .btn{font-size:16px;padding:14px 20px;width:100%}
+  .hero__btns{gap:12px}
+  .c4,.c3,.c2,.pills,.checks.two,.grid2{grid-template-columns:1fr}
+  .areas-grid{grid-template-columns:repeat(2,1fr)}
+  .areas-grid span{font-size:18px;line-height:27px}
+  .badgebar .wrap{flex-direction:column;align-items:flex-start;gap:14px}
+  .badgebar span{font-size:18px;line-height:27px}
+  .whylist li{font-size:20px;line-height:30px}
+  .site-footer .cols{grid-template-columns:1fr}
+  .topbar{height:auto;padding:10px 0}
+  .topbar .wrap{flex-direction:column;align-items:flex-start;gap:6px}
+  .topbar span.areas{font-size:14px}
+  .mobilebar{display:flex}
+  .bigphone{font-size:34px;line-height:42px}
+  .faq summary{font-size:19px;line-height:26px}
+}
