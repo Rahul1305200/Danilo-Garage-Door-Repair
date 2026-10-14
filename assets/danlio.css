@@ -327,3 +327,173 @@ details.q .a{padding:0 0 20px;font-size:16px;line-height:24px;color:var(--ink)}
   .bigphone{font-size:34px;line-height:42px}
   .faq summary{font-size:19px;line-height:26px}
 }
+
+
+/* ==========================================================================
+   REFINEMENTS — desktop
+   Brand-locked values (container 1240, type scale, colours, header, hero,
+   80px section padding) are unchanged. What follows tightens the internal
+   spacing the live site never defines, and gives sections visual structure.
+
+   SPACING SCALE (8px base): 4 8 16 24 32 48 64 80 120
+   ========================================================================== */
+:root{
+  --s1:4px; --s2:8px; --s3:16px; --s4:24px; --s5:32px; --s6:48px; --s7:64px; --s8:80px; --s9:120px;
+}
+
+/* ---- section headings: accent rule + consistent rhythm ---- */
+.sec-head{margin-bottom:var(--s6)}
+.sec-head h2{margin-bottom:var(--s3)}
+.sec-head p{margin-bottom:0;max-width:760px}
+.sec-head.center p{margin-left:auto;margin-right:auto}
+.sec-head h2::after{
+  content:"";display:block;width:56px;height:4px;border-radius:2px;
+  background:var(--red);margin-top:var(--s4);
+}
+.sec-head.center h2::after{margin-left:auto;margin-right:auto}
+.sec--navy .sec-head h2::after{background:#fff}
+
+/* ---- cards: tighter grid, equal heights, real hover ---- */
+.cards{gap:var(--s4)}
+.card{
+  padding:var(--s5);
+  display:flex;flex-direction:column;
+  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+}
+.card h3{margin-bottom:var(--s3)}
+.card p{margin-bottom:0}
+.card:hover{
+  transform:translateY(-3px);
+  border-color:var(--navy);
+  box-shadow:0 10px 30px rgba(16,34,66,.10);
+}
+.card .cardlink{margin-top:auto;padding-top:var(--s4)}
+
+/* ---- icon tile: bigger, bordered, reacts with the card ---- */
+.ico{
+  width:64px;height:64px;border-radius:6px;
+  border:1px solid rgba(31,58,104,.14);
+  background:rgba(31,58,104,.07);color:var(--navy-deep);
+  margin-bottom:var(--s4);
+  transition:background .18s ease,color .18s ease,border-color .18s ease;
+}
+.ico .ic{font-size:28px}
+.card:hover .ico{background:var(--navy-deep);border-color:var(--navy-deep);color:#fff}
+.ico--red{background:rgba(211,47,47,.08);border-color:rgba(211,47,47,.18);color:var(--red)}
+.card:hover .ico--red{background:var(--red);border-color:var(--red);color:#fff}
+
+/* ---- badge bar: centred with dividers instead of space-between ---- */
+.badgebar{padding:var(--s4) 0}
+.badgebar .wrap{justify-content:center;gap:0}
+.badgebar span{padding:0 var(--s7);position:relative}
+.badgebar span + span::before{
+  content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);
+  width:1px;height:28px;background:rgba(255,255,255,.26);
+}
+
+/* ---- steps: connector line through the numbers ---- */
+.steps{position:relative}
+.steps::before{
+  content:"";position:absolute;top:30px;left:16.66%;right:16.66%;height:2px;
+  background:rgba(255,255,255,.22);z-index:0;
+}
+.step{position:relative;z-index:1}
+.step .n{box-shadow:0 0 0 8px var(--navy)}
+.step h3{margin-bottom:var(--s3)}
+
+/* ---- pills: size to content instead of a rigid 4-col grid ---- */
+.pills{display:flex;flex-wrap:wrap;gap:var(--s3) var(--s5);justify-content:center}
+.pills span{
+  flex:0 1 auto;padding:var(--s3) var(--s4);
+  border:1px solid rgba(255,255,255,.22);border-radius:4px;
+  background:rgba(255,255,255,.05);
+}
+
+/* ---- reviews: quote mark + accent ---- */
+.rev{padding:var(--s5);position:relative;border-top-width:3px}
+.rev .ic-quote{font-size:26px;color:rgba(31,58,104,.18);margin-bottom:var(--s3)}
+.rev q{margin-bottom:var(--s4)}
+
+/* ---- warranty tiles ---- */
+.warr{gap:var(--s4)}
+.warr .w{padding:var(--s5);transition:border-color .18s ease}
+.warr .w:hover{border-color:var(--navy)}
+.warr .big{margin-bottom:var(--s2)}
+
+/* ---- brand strip: replaces four empty boxes ---- */
+.brandstrip{
+  display:flex;flex-wrap:wrap;justify-content:center;align-items:center;
+  gap:0;border:1px solid var(--line);border-radius:4px;overflow:hidden;
+}
+.brandstrip span{
+  flex:1 1 0;min-width:180px;text-align:center;
+  padding:var(--s5) var(--s4);
+  font-family:var(--h);font-size:24px;font-weight:600;color:var(--navy-deep);
+  border-right:1px solid var(--line);
+}
+.brandstrip span:last-child{border-right:0}
+
+/* ---- split sections ---- */
+.split{gap:var(--s7)}
+.split h2{margin-bottom:var(--s4)}
+.checks{gap:var(--s3)}
+.checks li{align-items:flex-start}
+
+/* ---- CTA hierarchy ---------------------------------------------------
+   Primary  = solid red, the phone call
+   Secondary= outlined navy, the form
+   Tertiary = inline text link with an arrow
+   -------------------------------------------------------------------- */
+.btn--outline{background:transparent;color:var(--navy-deep);border-color:var(--navy-deep)}
+.btn--outline:hover{background:var(--navy-deep);color:#fff}
+.ctarow{display:flex;gap:var(--s3);flex-wrap:wrap;align-items:center}
+.ctarow.center{justify-content:center}
+.ctanote{
+  font-size:15px;line-height:22px;color:#6d7787;margin:var(--s3) 0 0;
+}
+.center .ctanote{text-align:center}
+.sec--navy .ctanote,.ctaband .ctanote{color:rgba(255,255,255,.76)}
+.linkcta{
+  display:inline-flex;align-items:center;gap:var(--s2);
+  font-family:var(--h);font-weight:600;font-size:18px;color:var(--navy-deep);
+}
+.linkcta .ic{font-size:14px;transition:transform .18s ease}
+.linkcta:hover{color:var(--red)}
+.linkcta:hover .ic{transform:translateX(4px)}
+
+/* ---- CTA band ---- */
+.ctaband{padding:var(--s7) 0}
+.ctaband h2{margin-bottom:var(--s3)}
+.ctaband h2::after{display:none}
+.ctaband p{margin-bottom:var(--s5)}
+
+/* ---- related services block ---- */
+.related{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s4)}
+.related a{
+  display:flex;flex-direction:column;gap:var(--s2);
+  border:1px solid var(--line);border-radius:4px;padding:var(--s5);
+  transition:border-color .18s ease,transform .18s ease,box-shadow .18s ease;
+}
+.related a:hover{border-color:var(--navy);transform:translateY(-3px);box-shadow:0 10px 30px rgba(16,34,66,.10)}
+.related .k{
+  font-family:var(--b);font-size:13px;font-weight:600;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--red);
+}
+.related h3{margin:0;font-size:23px;line-height:28px}
+.related p{margin:0;font-size:16px;line-height:24px;color:var(--ink)}
+
+/* ---- form spacing ---- */
+.formbox input,.formbox select,.formbox textarea{margin-bottom:var(--s4)}
+.formbox label{margin-bottom:var(--s2)}
+.req{color:var(--red)}
+
+/* ---- keyword emphasis in body copy ---- */
+.sec p strong,.checks strong{color:var(--navy-deep);font-weight:600}
+.sec--navy p strong,.sec--navy .checks strong{color:#fff}
+
+/* ---- service-area tiles ---- */
+.areas-grid{gap:var(--s4) var(--s3)}
+
+/* hero CTA micro-copy must not inherit the 18px hero paragraph size */
+.hero .ctanote{font-size:15px;line-height:22px;color:rgba(255,255,255,.72);margin-top:var(--s4)}
+.badgebar + .sec .ctanote{font-size:15px}
