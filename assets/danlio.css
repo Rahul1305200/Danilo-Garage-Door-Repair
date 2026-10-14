@@ -346,12 +346,6 @@ details.q .a{padding:0 0 20px;font-size:16px;line-height:24px;color:var(--ink)}
 .sec-head h2{margin-bottom:var(--s3)}
 .sec-head p{margin-bottom:0;max-width:760px}
 .sec-head.center p{margin-left:auto;margin-right:auto}
-.sec-head h2::after{
-  content:"";display:block;width:56px;height:4px;border-radius:2px;
-  background:var(--red);margin-top:var(--s4);
-}
-.sec-head.center h2::after{margin-left:auto;margin-right:auto}
-.sec--navy .sec-head h2::after{background:#fff}
 
 /* ---- cards: tighter grid, equal heights, real hover ---- */
 .cards{gap:var(--s4)}
@@ -385,7 +379,7 @@ details.q .a{padding:0 0 20px;font-size:16px;line-height:24px;color:var(--ink)}
 /* ---- badge bar: centred with dividers instead of space-between ---- */
 .badgebar{padding:var(--s4) 0}
 .badgebar .wrap{justify-content:center;gap:0}
-.badgebar span{padding:0 var(--s7);position:relative}
+.badgebar span{padding:0 var(--s5);position:relative;white-space:nowrap}
 .badgebar span + span::before{
   content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);
   width:1px;height:28px;background:rgba(255,255,255,.26);
@@ -464,7 +458,6 @@ details.q .a{padding:0 0 20px;font-size:16px;line-height:24px;color:var(--ink)}
 /* ---- CTA band ---- */
 .ctaband{padding:var(--s7) 0}
 .ctaband h2{margin-bottom:var(--s3)}
-.ctaband h2::after{display:none}
 .ctaband p{margin-bottom:var(--s5)}
 
 /* ---- related services block ---- */
@@ -497,3 +490,383 @@ details.q .a{padding:0 0 20px;font-size:16px;line-height:24px;color:var(--ink)}
 /* hero CTA micro-copy must not inherit the 18px hero paragraph size */
 .hero .ctanote{font-size:15px;line-height:22px;color:rgba(255,255,255,.72);margin-top:var(--s4)}
 .badgebar + .sec .ctanote{font-size:15px}
+
+/* ---- hero padding -----------------------------------------------------
+   The live site uses 80px top / 150px bottom, but its hero carries less
+   content so the extra bottom padding never reads as empty space. On these
+   pages it left a dead band of photo under the CTA, so the hero is balanced
+   to the section rhythm instead. */
+.hero{padding-top:var(--s8);padding-bottom:var(--s8)}
+.hero .ctanote{margin-top:var(--s4);margin-bottom:0}
+.hero__btns{margin-top:var(--s5)}
+.hero__subhead{margin-bottom:var(--s4)}
+.hero p{margin-bottom:0}
+
+
+/* ==========================================================================
+   HERO WITH LEAD FORM
+   The request form moves out of the page footer and into the hero, filling
+   the empty right-hand side of the photo and capturing the lead above the
+   fold instead of 10 sections down.
+   ========================================================================== */
+.hero--form .wrap{
+  display:grid;grid-template-columns:1.05fr .95fr;gap:var(--s7);align-items:center;
+}
+.hero--form .hero__inner{max-width:none}
+.hero--form h1{font-size:58px;line-height:66px}
+.hero--form .hero__subhead{font-size:20px;line-height:30px}
+.hero--form .hero__btns{margin-top:var(--s4)}
+.hero--form .btn{font-size:17px;padding:14px 22px}
+
+.heroform{
+  background:#fff;border-radius:6px;padding:var(--s5);
+  box-shadow:0 18px 50px rgba(6,23,51,.32);
+}
+.heroform h2{
+  font-size:28px;line-height:34px;margin-bottom:var(--s1);color:var(--navy-deep);
+}
+.heroform .sub{font-size:15px;line-height:22px;color:#606b7d;margin-bottom:var(--s4)}
+.heroform label{
+  display:block;font-family:var(--h);font-size:13px;font-weight:600;
+  color:var(--navy-deep);margin-bottom:6px;
+}
+.heroform input,.heroform select,.heroform textarea{
+  width:100%;padding:11px 13px;border:1px solid #D4DBE6;border-radius:4px;
+  font-family:var(--b);font-size:15px;line-height:22px;color:var(--ink);
+  background:#fff;margin-bottom:var(--s3);
+}
+.heroform input:focus,.heroform select:focus,.heroform textarea:focus{
+  outline:none;border-color:var(--navy);box-shadow:0 0 0 3px rgba(31,58,104,.12);
+}
+.heroform textarea{min-height:70px;resize:vertical}
+.heroform .grid2{gap:0 var(--s3)}
+.heroform .btn{width:100%;font-size:18px;padding:14px 20px}
+.heroform .formnote{
+  font-size:13px;line-height:19px;color:#6d7787;text-align:center;margin:var(--s3) 0 0;
+}
+
+/* ==========================================================================
+   WHATSAPP FLOATING BUTTON
+   ========================================================================== */
+.wa-float{
+  position:fixed;right:28px;bottom:28px;z-index:95;
+  width:60px;height:60px;border-radius:50%;
+  background:#25D366;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 20px rgba(37,211,102,.45);
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+.wa-float:hover{transform:scale(1.07);box-shadow:0 10px 28px rgba(37,211,102,.6)}
+.wa-float .ic{font-size:34px;background-color:#fff}
+.wa-float::after{
+  content:attr(data-label);
+  position:absolute;right:72px;top:50%;transform:translateY(-50%);
+  white-space:nowrap;background:var(--navy-deep);color:#fff;
+  font-family:var(--b);font-size:14px;font-weight:500;
+  padding:8px 14px;border-radius:4px;opacity:0;pointer-events:none;
+  transition:opacity .18s ease;
+}
+.wa-float:hover::after{opacity:1}
+
+/* ==========================================================================
+   BRANDS WE SERVICE — feature section
+   ========================================================================== */
+.brands{background:var(--navy-deep);color:#fff}
+.brands h2,.brands h3{color:#fff}
+.brands .sec-head p{color:rgba(255,255,255,.86)}
+.brandgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s4)}
+.brandgrid .b{
+  background:#fff;border-radius:6px;padding:var(--s5) var(--s4);
+  text-align:center;transition:transform .18s ease,box-shadow .18s ease;
+}
+.brandgrid .b:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(0,0,0,.28)}
+.brandgrid .name{
+  font-family:var(--h);font-size:26px;font-weight:700;line-height:32px;
+  color:var(--navy-deep);letter-spacing:-.01em;
+}
+.brandgrid .meta{
+  font-family:var(--b);font-size:14px;line-height:20px;color:#6d7787;margin-top:6px;
+}
+.brandtrust{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s4);
+  margin-top:var(--s6);padding-top:var(--s6);
+  border-top:1px solid rgba(255,255,255,.18);
+}
+.brandtrust > div{display:flex;gap:var(--s3);align-items:flex-start}
+.brandtrust > div > div{display:block;min-width:0}
+.brandtrust .ic{font-size:26px;color:#fff;flex:none;margin-top:2px}
+.brandtrust h3{font-size:19px;line-height:25px;font-weight:600;margin:0 0 6px}
+.brandtrust p{font-size:16px;line-height:24px;color:rgba(255,255,255,.86);margin:0}
+
+
+/* ==========================================================================
+   CUSTOM SELECT
+   A native <select> renders its option list with the operating system's own
+   styling, which cannot be themed. The markup keeps a real <select> for
+   accessibility and form submission; JS mirrors it into this styled list.
+   ========================================================================== */
+.selectwrap{position:relative;margin-bottom:var(--s3)}
+.selectwrap select{position:absolute;opacity:0;pointer-events:none;height:0;margin:0}
+.sel-btn{
+  width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:11px 13px;border:1px solid #D4DBE6;border-radius:4px;background:#fff;
+  font-family:var(--b);font-size:15px;line-height:22px;color:var(--ink);
+  text-align:left;cursor:pointer;
+}
+.sel-btn:hover{border-color:var(--navy)}
+.sel-btn::after{
+  content:"";width:9px;height:9px;flex:none;margin-right:2px;
+  border-right:2px solid var(--navy-deep);border-bottom:2px solid var(--navy-deep);
+  transform:rotate(45deg) translate(-2px,-2px);transition:transform .18s ease;
+}
+.selectwrap.open .sel-btn{border-color:var(--navy);box-shadow:0 0 0 3px rgba(31,58,104,.12)}
+.selectwrap.open .sel-btn::after{transform:rotate(-135deg) translate(-3px,-3px)}
+.sel-list{
+  position:absolute;top:calc(100% + 6px);left:0;right:0;z-index:40;
+  background:#fff;border:1px solid #D4DBE6;border-radius:4px;
+  box-shadow:0 14px 36px rgba(16,34,66,.18);
+  padding:6px;margin:0;list-style:none;max-height:286px;overflow:auto;display:none;
+}
+.selectwrap.open .sel-list{display:block}
+.sel-list li{
+  padding:10px 12px;border-radius:3px;cursor:pointer;
+  font-family:var(--b);font-size:15px;line-height:22px;color:var(--ink);
+}
+.sel-list li:hover{background:rgba(31,58,104,.07);color:var(--navy-deep)}
+.sel-list li[aria-selected="true"]{
+  background:var(--navy-deep);color:#fff;font-weight:500;
+}
+.sel-list::-webkit-scrollbar{width:10px}
+.sel-list::-webkit-scrollbar-thumb{background:#c9d2e0;border-radius:6px;border:3px solid #fff}
+
+
+/* ==========================================================================
+   GOOGLE REVIEWS
+   Rating summary + verbatim reviews from the Google Business Profile.
+   ========================================================================== */
+.ratingcard{
+  display:flex;align-items:center;gap:var(--s4);
+  border:1px solid var(--line);border-radius:6px;padding:var(--s4) var(--s5);
+  background:#fff;box-shadow:0 2px 10px rgba(16,34,66,.06);
+}
+.ratingcard .score{
+  font-family:var(--h);font-size:56px;font-weight:700;line-height:1;color:var(--navy-deep);
+}
+.ratingcard .meta{display:flex;flex-direction:column;gap:4px}
+.stars{display:flex;gap:3px}
+.stars .ic{font-size:18px;background-color:#F5A623}
+.ratingcard .count{font-size:15px;line-height:22px;color:#6d7787}
+.ratingcard .src{
+  font-family:var(--h);font-weight:600;font-size:15px;color:var(--navy-deep);
+}
+
+.reviewcard{
+  border:1px solid var(--line);border-radius:6px;padding:var(--s5);background:#fff;
+  transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease;
+}
+.reviewcard:hover{border-color:var(--navy);box-shadow:0 10px 30px rgba(16,34,66,.10);transform:translateY(-3px)}
+.reviewcard .who{display:flex;align-items:center;gap:var(--s3);margin-bottom:var(--s3)}
+.reviewcard .avatar{
+  width:46px;height:46px;border-radius:50%;flex:none;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--navy-deep);color:#fff;
+  font-family:var(--h);font-weight:700;font-size:20px;
+}
+.reviewcard .nm{font-family:var(--h);font-weight:600;font-size:18px;line-height:22px;color:var(--navy-deep)}
+.reviewcard .sub{font-size:13px;line-height:19px;color:#6d7787;margin-top:2px}
+.reviewcard .rowtop{display:flex;align-items:center;gap:var(--s3);margin-bottom:var(--s3)}
+.reviewcard .when{font-size:13px;color:#6d7787}
+.reviewcard p{font-size:16px;line-height:25px;color:var(--ink);margin:0}
+.reviews-cta{text-align:center;margin-top:var(--s6)}
+
+/* brands: tighten hierarchy — icon, then heading over body text */
+.brandtrust{gap:var(--s6)}
+.brandtrust .ic{font-size:24px;opacity:.9}
+.brands .ctanote{color:rgba(255,255,255,.88);font-size:16px;line-height:24px}
+.brands .ctanote a{color:#fff;text-decoration:underline;font-weight:600}
+.brandgrid .name{font-size:24px;line-height:30px}
+
+
+/* ==========================================================================
+   SERVICE AREAS — feature section
+   Cities grouped by the three counties the business actually serves.
+   ========================================================================== */
+.areas{background:var(--navy);color:#fff}
+.areas h2,.areas h3{color:#fff}
+.areas .sec-head p{color:rgba(255,255,255,.86)}
+.countygrid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s4)}
+.county{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);
+  border-radius:6px;padding:var(--s5);
+}
+.county h3{
+  font-size:21px;line-height:27px;margin:0 0 var(--s4);
+  padding-bottom:var(--s3);border-bottom:1px solid rgba(255,255,255,.18);
+  display:flex;align-items:center;gap:10px;
+}
+.county h3 .ic{font-size:18px;opacity:.9}
+.county ul{list-style:none;margin:0;padding:0;display:grid;gap:var(--s3)}
+.county li{display:flex;align-items:center;gap:10px;font-size:17px;line-height:24px}
+.county li .ic{font-size:14px;color:rgba(255,255,255,.7);flex:none}
+.areas-foot{
+  margin-top:var(--s6);padding-top:var(--s6);
+  border-top:1px solid rgba(255,255,255,.18);
+  display:flex;align-items:center;justify-content:space-between;gap:var(--s5);flex-wrap:wrap;
+}
+.areas-foot p{margin:0;font-size:18px;line-height:27px;color:rgba(255,255,255,.88);max-width:620px}
+.areas-foot strong{color:#fff}
+
+
+/* ==========================================================================
+   PROBLEM GRID
+   Replaces the centred pill wrap. A strict 4x2 grid with left-aligned tiles,
+   a problem-specific icon chip and a hover state. Tiles that map to another
+   page are links, so the block carries internal navigation.
+   ========================================================================== */
+.problemgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s4)}
+.problem{
+  display:flex;align-items:flex-start;gap:var(--s3);
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);
+  border-radius:6px;padding:var(--s4);color:#fff;
+  transition:background .18s ease,border-color .18s ease,transform .18s ease;
+}
+a.problem:hover{
+  background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.42);
+  transform:translateY(-3px);
+}
+.problem .chip{
+  width:44px;height:44px;border-radius:6px;flex:none;
+  background:rgba(211,47,47,.9);
+  display:flex;align-items:center;justify-content:center;
+}
+.problem .chip .ic{font-size:20px;background-color:#fff}
+.problem .lbl{
+  font-family:var(--h);font-weight:600;font-size:17px;line-height:24px;color:#fff;
+}
+.problem .go{
+  font-family:var(--b);font-size:13px;line-height:19px;
+  color:rgba(255,255,255,.72);margin-top:4px;display:block;
+}
+a.problem:hover .go{color:#fff}
+.problems-foot{
+  margin-top:var(--s6);display:flex;align-items:center;justify-content:center;
+  gap:var(--s4);flex-wrap:wrap;
+}
+.problems-foot .ctanote{margin:0;color:rgba(255,255,255,.82);font-size:16px}
+
+
+/* ==========================================================================
+   REVIEW CAROUSEL
+   Horizontal track with snap points and arrow controls. Three cards visible
+   on desktop; the track is still scrollable by trackpad/touch.
+   ========================================================================== */
+.revbar{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:var(--s5);flex-wrap:wrap;margin-bottom:var(--s6);
+}
+.revnav{display:flex;gap:var(--s3)}
+.revnav button{
+  width:52px;height:52px;border-radius:50%;flex:none;
+  border:1px solid var(--line);background:#fff;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .18s ease,border-color .18s ease,opacity .18s ease;
+}
+.revnav button:hover:not(:disabled){background:var(--navy-deep);border-color:var(--navy-deep)}
+.revnav button:hover:not(:disabled) .ic{background-color:#fff}
+.revnav button:disabled{opacity:.35;cursor:default}
+.revnav .ic{font-size:18px;background-color:var(--navy-deep)}
+.revnav .prev .ic{transform:rotate(180deg)}
+
+.revcar{position:relative}
+.revtrack{
+  display:flex;gap:var(--s4);
+  overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;
+  padding-bottom:var(--s2);
+  scrollbar-width:none;-ms-overflow-style:none;
+}
+.revtrack::-webkit-scrollbar{display:none}
+.revtrack .reviewcard{
+  flex:0 0 calc((100% - (var(--s4) * 2)) / 3);
+  scroll-snap-align:start;
+  display:flex;flex-direction:column;
+}
+.revtrack .reviewcard p{flex:1}
+
+
+/* ==========================================================================
+   REVIEW CAROUSEL v2
+   Restrained header: title left, "see all" link + square arrow controls
+   right. Cards carry avatar, name, date, stars and clamped text with a
+   see-more toggle. Hairline rule and a single centred CTA below.
+   ========================================================================== */
+.sec--reviews{background:var(--bg-soft)}
+.sec--reviews .sec-head{display:none}
+
+.revbar{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:var(--s5);flex-wrap:wrap;margin-bottom:var(--s5);
+}
+.revbar h2{
+  font-size:34px;line-height:42px;margin:0;color:var(--navy-deep);
+}
+.revbar .right{display:flex;align-items:center;gap:var(--s4)}
+.seeall{
+  font-family:var(--h);font-weight:600;font-size:17px;color:var(--navy-deep);
+  display:inline-flex;align-items:center;gap:8px;
+}
+.seeall .ic{font-size:14px;transition:transform .18s ease}
+.seeall:hover{color:var(--red)}
+.seeall:hover .ic{transform:translateX(4px)}
+
+.revnav{display:flex;gap:10px}
+.revnav button{
+  width:48px;height:48px;border-radius:4px;flex:none;
+  border:1px solid var(--line);background:#fff;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .18s ease,border-color .18s ease,opacity .18s ease;
+}
+.revnav .ic{font-size:16px;background-color:var(--navy-deep)}
+.revnav .prev .ic{transform:rotate(180deg)}
+.revnav .next{background:var(--red);border-color:var(--red)}
+.revnav .next .ic{background-color:#fff}
+.revnav .prev:hover:not(:disabled){border-color:var(--navy-deep);background:var(--navy-deep)}
+.revnav .prev:hover:not(:disabled) .ic{background-color:#fff}
+.revnav .next:hover:not(:disabled){background:#b02222;border-color:#b02222}
+.revnav button:disabled{opacity:.35;cursor:default}
+
+.reviewcard{
+  border:1px solid var(--line);border-radius:4px;padding:var(--s5);background:#fff;
+}
+.reviewcard:hover{border-color:#C9D5E6;box-shadow:0 6px 20px rgba(16,34,66,.07);transform:none}
+.reviewcard .who{display:flex;align-items:center;gap:14px;margin-bottom:var(--s3)}
+.reviewcard .avatar{
+  width:44px;height:44px;border-radius:50%;flex:none;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--navy-deep);color:#fff;
+  font-family:var(--h);font-weight:700;font-size:18px;
+}
+.reviewcard .nm{font-family:var(--h);font-weight:600;font-size:17px;line-height:22px;color:var(--navy-deep)}
+.reviewcard .when{font-size:14px;line-height:20px;color:#7b8694;margin-top:2px;display:block}
+.reviewcard .stars{margin-bottom:var(--s3)}
+.reviewcard .stars .ic{font-size:15px}
+.reviewcard p{
+  font-size:16px;line-height:26px;color:var(--ink);margin:0;
+  display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;
+}
+.reviewcard.open p{-webkit-line-clamp:unset;overflow:visible}
+.seemore{
+  margin-top:var(--s3);background:none;border:0;padding:0;cursor:pointer;
+  font-family:var(--h);font-weight:600;font-size:16px;color:var(--navy-deep);
+  text-decoration:underline;text-underline-offset:3px;
+}
+.seemore:hover{color:var(--red)}
+
+.reviews-cta{
+  margin-top:var(--s6);padding-top:var(--s6);
+  border-top:1px solid var(--line);text-align:center;
+}
+
+/* Dark sections: keep emphasised text legible. The base rule paints <strong>
+   navy, which disappears on the navy bands. */
+.sec--navy p strong,.sec--deep p strong,.areas p strong,.brands p strong,
+.ctaband p strong,.sec--navy .checks strong,.areas .checks strong,
+.sec--navy li strong,.areas li strong{color:#fff}
